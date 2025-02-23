@@ -1,35 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Encryption & Decryption</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Encryption &amp; Decryption Tool</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap" rel="stylesheet">
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    
+    .container {
+      background: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      padding: 20px 30px;
+      width: 90%;
+      max-width: 500px;
+    }
+    
+    h2 {
+      text-align: center;
+      margin-bottom: 15px;
+      color: #333;
+    }
+    
+    label {
+      display: block;
+      margin: 15px 0 5px;
+      color: #555;
+    }
+    
+    select, input[type="text"], textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    
+    textarea[readonly] {
+      background-color: #f9f9f9;
+    }
+    
+    .button-group {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 15px;
+    }
+    
+    button {
+      width: 48%;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      font-weight: 500;
+      cursor: pointer;
+      background: #4a90e2;
+      color: #fff;
+      transition: background 0.3s;
+    }
+    
+    button:hover {
+      background: #357ab8;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h2>Encryption & Decryption Tool</h2>
-        <label for="algorithm">Select Algorithm:</label>
-        <select id="algorithm">
-            <option value="AES">AES</option>
-            <option value="DES">DES</option>
-            <option value="TripleDES">TripleDES</option>
-        </select>
+  <main class="container">
+    <h2>Encryption &amp; Decryption Tool</h2>
+    <form id="cryptoForm">
+      <label for="algorithm">Select Algorithm:</label>
+      <select id="algorithm">
+        <option value="AES">AES</option>
+        <option value="DES">DES</option>
+        <option value="TripleDES">TripleDES</option>
+      </select>
 
-        <label for="inputText">Enter Text:</label>
-        <textarea id="inputText"></textarea>
+      <label for="inputText">Enter Text:</label>
+      <textarea id="inputText" placeholder="Type your text here..."></textarea>
 
-        <label for="key">Enter Key:</label>
-        <input type="text" id="key">
+      <label for="key">Enter Key:</label>
+      <input type="text" id="key" placeholder="Encryption key">
 
-        <button onclick="encrypt()">Encrypt</button>
-        <button onclick="decrypt()">Decrypt</button>
+      <div class="button-group">
+        <button type="button" onclick="encrypt()">Encrypt</button>
+        <button type="button" onclick="decrypt()">Decrypt</button>
+      </div>
 
-        <h3>Output:</h3>
-        <textarea id="outputText" readonly></textarea>
-    </div>
+      <label for="outputText">Output:</label>
+      <textarea id="outputText" readonly placeholder="Result will appear here..."></textarea>
+    </form>
+  </main>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
-    <script src="script.js"></script>
+  <!-- External Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+  <!-- Custom Script -->
+  <script src="script.js"></script>
 </body>
 </html>
