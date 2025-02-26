@@ -21,14 +21,22 @@ app.get("/keys", (req, res) => {
 
 app.post("/encrypt", (req, res) => {
     const { text, key } = req.body;
-    const encrypted = crypto.publicEncrypt(key, Buffer.from(text));
-    res.json({ encrypted: encrypted.toString("base64") });
+    try {
+        const encrypted = crypto.publicEncrypt(key, Buffer.from(text));
+        res.json({ encrypted: encrypted.toString("base64") });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
 });
 
 app.post("/decrypt", (req, res) => {
     const { encryptedText, key } = req.body;
-    const decrypted = crypto.privateDecrypt(key, Buffer.from(encryptedText, "base64"));
-    res.json({ decrypted: decrypted.toString() });
+    try {
+        const decrypted = crypto.privateDecrypt(key, Buffer.from(encryptedText, "base64"));
+        res.json({ decrypted: decrypted.toString() });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
 });
 
 app.listen(3000, () => console.log("Server running on port 3000"));
