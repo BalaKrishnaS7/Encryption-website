@@ -4,16 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Encryption & Decryption Tool</title>
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" href="favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
 </head>
 <body>
   <main class="container">
-    <button class="toggle-darkmode" id="darkModeToggle">Toggle Dark Mode</button>
-    <h2>Encryption & Decryption Tool</h2>
+    <div class="header">
+      <h2>🔐 Encryption & Decryption Tool</h2>
+      <button class="dark-mode-toggle" id="darkModeToggle">
+        <i class="fas fa-moon"></i>
+      </button>
+    </div>
+    
     <form id="cryptoForm">
-      <label for="algorithm">Select Algorithm:</label>
+      <label for="algorithm">🔽 Select Algorithm:</label>
       <select id="algorithm">
         <option value="AES">AES</option>
         <option value="DES">DES</option>
@@ -23,18 +28,18 @@
         <option value="ChaCha20">ChaCha20</option>
       </select>
 
-      <label for="inputText">Enter Text:</label>
+      <label for="inputText">✏️ Enter Text:</label>
       <textarea id="inputText" placeholder="Type your text here..."></textarea>
 
-      <label for="key">Enter Key (Not needed for RSA):</label>
+      <label for="key">🔑 Enter Key (Not needed for RSA):</label>
       <input type="text" id="key" placeholder="Encryption key">
 
       <div class="button-group">
-        <button type="button" onclick="encrypt()">Encrypt</button>
-        <button type="button" onclick="decrypt()">Decrypt</button>
+        <button type="button" onclick="encrypt()">Encrypt 🔒</button>
+        <button type="button" onclick="decrypt()">Decrypt 🔓</button>
       </div>
 
-      <label for="outputText">Output:</label>
+      <label for="outputText">📜 Output:</label>
       <textarea id="outputText" readonly placeholder="Result will appear here..."></textarea>
     </form>
   </main>
