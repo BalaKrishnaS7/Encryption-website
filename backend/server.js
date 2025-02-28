@@ -7,7 +7,6 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-// RSA Key Pair Generation
 const { generateKeyPairSync } = require("crypto");
 const { publicKey, privateKey } = generateKeyPairSync("rsa", {
     modulusLength: 2048,
@@ -20,22 +19,16 @@ app.get("/keys", (req, res) => {
 });
 
 app.post("/encrypt", (req, res) => {
-    const { text, key } = req.body;
     try {
+        const { text, key } = req.body;
+        if (!text || !key) {
+            return res.status(400).json({ error: "Missing text or key." });
+        }
         const encrypted = crypto.publicEncrypt(key, Buffer.from(text));
         res.json({ encrypted: encrypted.toString("base64") });
     } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-});
-
-app.post("/decrypt", (req, res) => {
-    const { encryptedText, key } = req.body;
-    try {
-        const decrypted = crypto.privateDecrypt(key, Buffer.from(encryptedText, "base64"));
-        res.json({ decrypted: decrypted.toString() });
-    } catch (error) {
-        res.status(500).json({ error: error.message });
+        console.error("Encryption error:", error.message);
+        res.status(500).json({ error: "Encryption failed. Invalid key or input." });
     }
 });
 
