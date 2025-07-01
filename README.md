@@ -8,6 +8,7 @@
 
 ## 📁 Project Structure
 
+```
 Encryption-website/
 ├── public/ # Frontend files
 │ ├── index.html
@@ -16,7 +17,7 @@ Encryption-website/
 ├── server.js # RSA backend logic
 ├── package.json
 └── README.md
-
+```
 ---
 
 ## 🚀 Getting Started
