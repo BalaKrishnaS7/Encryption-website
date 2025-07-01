@@ -36,14 +36,14 @@ Encryption-website/
    node server.js
    ```
 4. **Open the frontend:**
--Open public/index.html manually in your browser.
--The backend handles RSA encryption/decryption.
+- Open public/index.html manually in your browser.
+- The backend handles RSA encryption/decryption.
 
 ## ⚠️ Limitations in Prototype
 
--Blowfish and ChaCha20 encryption not yet functional
--No database integration
--Frontend-only file encryption lacks deeper security layering
+- Blowfish and ChaCha20 encryption not yet functional
+- No database integration
+- Frontend-only file encryption lacks deeper security layering
 
 ## 🌟 Looking for the Full Version?
 
